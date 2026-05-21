@@ -1,0 +1,65 @@
+# ─── Heavy source assets (kept locally, not in Git) ──────────────────────────
+# Original fleet photography — too large for Git (>100MB files inside)
+DOCS/Bildes/*
+!DOCS/Bildes/README.md
+# Original full-resolution offer PDFs (the 129MB master exceeds GitHub's limit)
+DOCS/Piedāvājumu faili/*
+!DOCS/Piedāvājumu faili/README.md
+
+# Adobe source files — large binaries, not needed for the AI design builder
+*.ai
+*.psd
+*.indd
+*.eps
+
+# ─── OS / editor noise ──────────────────────────────────────────────────────
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*~
+.~lock.*#
+
+# ─── Editors / IDE ──────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.code-workspace
+
+# ─── Logs / temp ────────────────────────────────────────────────────────────
+*.log
+*.tmp
+*.bak
+*.swp
+
+# ─── WordPress (when the WP install lands here) ─────────────────────────────
+wp-config.php
+wp-config-local.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backup*/
+wp-content/wflogs/
+wp-content/debug.log
+wp-content/advanced-cache.php
+wp-content/object-cache.php
+wp-content/mu-plugins/*.php
+
+# ─── Node / build artifacts (themes & blocks) ───────────────────────────────
+node_modules/
+dist/
+build/
+.cache/
+.parcel-cache/
+.next/
+.turbo/
+
+# ─── PHP / Composer ─────────────────────────────────────────────────────────
+vendor/
+composer.phar
+
+# ─── Secrets ────────────────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
