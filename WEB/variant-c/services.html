@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Pakalpojumi · SYSTEM 03 — DLL-Transports</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+.svc-full{border-top:2px solid var(--ink);border-left:1px solid var(--ink)}
+.svc-block{display:grid;grid-template-columns:120px 1fr 1.2fr 320px;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--bg);transition:background .2s}
+.svc-block:hover{background:#fff}
+.svc-block.feat{background:var(--yellow)}
+.svc-block.feat:hover{background:var(--yellow-deep)}
+.svc-block.dark{background:var(--ink);color:#fff}
+.svc-block.dark:hover{background:#1A1A1A}
+.svc-block.dark h3{color:#fff}
+.svc-block.dark p{color:rgba(255,255,255,0.7)}
+.svc-block > div{padding:36px 28px;border-right:1px solid var(--line-2);display:flex;flex-direction:column;gap:14px}
+.svc-block.dark > div{border-right-color:rgba(255,255,255,0.08)}
+.svc-block > div:last-child{border-right:0}
+.svc-block .ix{font-family:var(--font-mono);font-size:48px;line-height:1;color:var(--mute);letter-spacing:-0.04em;align-items:start;justify-content:flex-start}
+.svc-block.feat .ix,.svc-block.dark .ix{color:rgba(255,255,255,0.25)}
+.svc-block.feat .ix{color:rgba(11,11,11,0.4)}
+.svc-block h3{font-size:28px;line-height:1.05;letter-spacing:-0.025em}
+.svc-block .tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-top:auto}
+.svc-block.dark .tag{color:rgba(255,255,255,0.5)}
+.svc-block p{font-size:15px;color:var(--ink-2);line-height:1.55;margin:0}
+.svc-block .specs{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--mute)}
+.svc-block .specs b{display:block;color:var(--ink);font-weight:600;font-size:15px;letter-spacing:-0.01em;text-transform:none;margin-top:3px;font-family:var(--font-display)}
+.svc-block.dark .specs{color:rgba(255,255,255,0.45)}
+.svc-block.dark .specs b{color:#fff}
+.svc-block .cta{margin-top:auto;display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink);padding-top:14px;border-top:1px solid currentColor;justify-content:space-between}
+.svc-block.dark .cta{color:var(--yellow);border-color:rgba(255,255,255,0.15)}
+.svc-block .cta a{padding:8px 14px;border:1px solid currentColor;color:inherit;transition:background .25s}
+.svc-block .cta a:hover{background:var(--ink);color:var(--yellow)}
+.svc-block.dark .cta a:hover{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+@media (max-width:1000px){
+  .svc-block{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="head-bar">
+    <div class="left">
+      <span class="live">DISPATCH · LIVE 24/7</span>
+      <span class="pipe">·</span>
+      <span>+371 29 242 181</span>
+    </div>
+    <div class="right">
+      <span>SYS.STATUS: NOMINAL</span>
+      <div class="lang">
+        <button class="on">LV</button>
+        <button>EN</button>
+        <button>RU</button>
+        <button>DE</button>
+      </div>
+    </div>
+  </div>
+  <div class="head-main">
+    <a href="home.html" class="brand">
+      <div class="brand-mark">D</div>
+      <div class="brand-text">DLL-Transports<small>SYS · 03 · HEAVY HAUL</small></div>
+    </a>
+    <nav class="primary">
+      <a href="home.html"><span class="ix">01</span>Sākums</a>
+      <a href="services.html" class="active"><span class="ix">02</span>Pakalpojumi</a>
+      <a href="#"><span class="ix">03</span>Autoparks</a>
+      <a href="#"><span class="ix">04</span>Projekti</a>
+      <a href="contact.html"><span class="ix">05</span>Kontakti</a>
+    </nav>
+    <div class="head-cta">
+      <a href="contact.html">[ Piedāvājums → ]</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="inner">
+    <div>
+      <div class="crumb"><a href="home.html">Sākums</a> &nbsp;/&nbsp;&nbsp;<span style="color:var(--ink)">Pakalpojumi</span></div>
+      <h1>Pakalpojumu<br/>ledger.</h1>
+      <div class="mono" style="margin-top:24px"><b>// 12 ieraksti</b> · pēdējais atjaunots 2026.05.20 · 4 ar B2C piekļuvi</div>
+    </div>
+    <div>
+      <p class="lede">Katrs pakalpojums ir atsevišķs ieraksts ar tehniku, specifikāciju un kapacitāti. Ja kaut kā tabulā nav — pajautā: 20 gadu pieredzē sastopam reti.</p>
+      <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+        <a href="contact.html?aud=b2b" class="btn btn-primary">B2B · Piedāvājums <span class="arr">→</span></a>
+        <a href="contact.html?aud=b2c" class="btn btn-yellow">B2C · Moduļu māja <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding:0;background:var(--bg)">
+  <div class="svc-full">
+    <article class="svc-block" id="s01">
+      <div class="ix">01</div>
+      <div>
+        <h3>Treilera pārvadājumi</h3>
+        <p>Standarta tents un Mega treileri ES paletēm un beramkravām. Pieredze regulāriem maršrutiem Baltija → DACH → Beniluksa.</p>
+        <div class="tag">// REGULĀRS · DAILY</div>
+      </div>
+      <div>
+        <div class="specs">
+          <span>KRAVNESĪBA<b>24 t</b></span>
+          <span>TILPUMS<b>90 m³</b></span>
+          <span>PALETES<b>33 EUR</b></span>
+          <span>ASS<b>3-axle</b></span>
+        </div>
+      </div>
+      <div>
+        <div class="cta"><span>SPC · 24t / 90m³</span><a href="contact.html">Cena →</a></div>
+      </div>
+    </article>
+
+    <article class="svc-block" id="s02">
+      <div class="ix">02</div>
+      <div>
+        <h3>Starptautiskie un vietējie pārvadājumi</h3>
+        <p>Visa ES, DACH, Skandināvija. CMR, T1, sarežģīti muitas dokumenti, ADR sertificēts personāls. Vietējie — gan Rīgā, gan reģionos.</p>
+        <div class="tag">// EU · NORDICS · DACH</div>
+      </div>
+      <div>
+        <div class="specs">
+          <span>REĢIONS<b>EU + N</b></span>
+          <span>DOKUMENTI<b>CMR · T1 · ADR</b></span>
+          <span>VALODA<b>LV · EN · RU · DE</b></span>
+          <span>APDR.<b>līdz €1M</b></span>
+        </div>
+      </div>
+      <div>
+        <div class="cta"><span>REG · EU</span><a href="contact.html">Cena →</a></div>
+      </div>
+    </article>
+
+    <article class="svc-block feat" id="s03">
+      <div class="ix">03</div>
+      <div>
+        <h3>Lielgabarīta kravas</h3>
+        <p>Negabarīts, smaga tehnika, konstrukcijas, transformatori. Goldhofer STN-L3 un DOLL Vario Plus treileri. Saskaņojumi ar CSDD, policijas pavadība, maršruta inspekcija.</p>
+        <div class="tag" style="color:rgba(11,11,11,0.65)">// FLAGSHIP · HEAVY HAUL</div>
+      </div>
+      <div>
+        <div class="specs">
+          <span>GAR<b>22 m</b></span>
+          <span>PLAT<b>5.5 m</b></span>
+          <span>AUGST<b>4.5 m</b></span>
+          <span>SVARS<b>līdz 100 t</b></span>
+        </div>
+      </div>
+      <div>
+        <div class="cta"><span>HVY · 100t</span><a href="contact.html" style="background:var(--ink);color:var(--yellow);border-color:var(--ink)">Cena →</a></div>
+      </div>
+    </article>
+
+    <article class="svc-block" id="s04">
+      <div class="ix">04</div>
+      <div>
+        <h3>Kravu pārvadājumi ar manipulatoru</h3>
+        <p>Hiab manipulators uz vilcēja — iekraušana un izkraušana bez papildu tehnikas objektā. Ērti būvmateriāliem, paletēm, konstrukcijām.</p>
+        <div class="tag">// HIAB · ON-TRUCK</div>
+      </div>
+      <div>
+        <div class="specs">
+          <span>CELTSPĒJA<b>10 t</b></span>
+          <span>SNIEDZAMĪBA<b>14 m</b></span>
+          <span>OPER.<b>iekļauts</b></span>
+          <span>SAGAT.<b>≤ 2h</b></span>
+        </div>
+      </div>
+      <div>
+        <div class="cta"><span>MAN · 10t</span><a href="contact.html">Cena →</a></div>
+      </div>
+    </article>
+
+    <article class="svc-block dark" id="s05">
+      <div class="ix">05</div>
+      <div>
+        <h3>Ceļamkrāna un autoceltņa pakalpojumi</h3>
+        <p>Pašgājēji autoceltņi līdz 80 t. Sertificēti operatori, drošības plāns, pacelšanas shēmas. Komplekss risinājums kopā ar pārvadājumu.</p>
+        <div class="tag">// LIFT · CERT.OPERATOR</div>
+      </div>
+      <div>
+        <div class="specs">
+          <span>CELTSPĒJA<b>80 t</b></span>
+          <span>SNIEDZ.<b>54 m</b></span>
+          <span>STAB.<b>4 atbalsti</b></span>
+          <span>PLĀNS<b>iekļauts</b></span>
+        </div>
+      </div>
+      <div>
+        <div class="cta"><span>LIFT · 80t</span><a href="contact.html">Cena →</a></div>
+      </div>
+    </article>
+
+    <article class="svc-block" id="s06">
+      <div class="ix">06</div>
+      <div>
+        <h3>Ekspress piegāde</h3>
+        <p>Dedicated vilcējs, divi šoferi pārmaiņus, GPS tracking. Reiss 24 stundu laikā Baltijas iekšienē, 48h Centrāleiropā.</p>
+        <div class="tag">// SLA · 24H BALTIC</div>
+      </div>
+      <div>
+        <div class="specs">
+          <span>ETA BALT<b>24h</b></span>
+          <span>ETA CE<b>48h</b></span>
+          <span>ŠOFERI<b>2 × maiņa</b></span>
+          <span>TRACK<b>GPS real-time</b></span>
+        </div>
+      </div>
+      <div>
+        <div class="cta"><span>EXP · 24h</span><a href="contact.html">Cena →</a></div>
+      </div>
+    </article>
+
+    <article class="svc-block" id="s07">
+      <div class="ix">07</div>
+      <div>
+        <h3>Atkritumu apsaimniekošana un konteineru pārvadājumi</h3>
+        <p>Konteineri 8 / 20 / 35 m³ — būvgružu, metāllūžņu, šķeldas un sadzīves atkritumu izvešanai. Sadarbība ar licencētiem pārstrādātājiem.</p>
+        <div class="tag">// CTR · 8 · 20 · 35</div>
+      </div>
+      <div>
+        <div class="specs">
+          <span>KONT.<b>8 / 20 / 35 m³</b></span>
+          <span>TIPS<b>būv · metāl · sadz.</b></span>
+          <span>LĪGUMS<b>vienreiz · period.</b></span>
+          <span>UTIL.<b>licencēta pārstr.</b></span>
+        </div>
+      </div>
+      <div>
+        <div class="cta"><span>CTR · 35m³</span><a href="contact.html">Cena →</a></div>
+      </div>
+    </article>
+
+    <article class="svc-block" id="s08">
+      <div class="ix">08</div>
+      <div>
+        <h3>Būvtehnikas pakalpojumi</h3>
+        <p>JCB ekskavators, frontālie iekrāvēji, mini-tehnika. Ar operatoru vai bez. Stundu vai dienu tarifs. Transports objektā — mūsu pusē.</p>
+        <div class="tag">// JCB · WHEEL LOAD</div>
+      </div>
+      <div>
+        <div class="specs">
+          <span>EKSKAV.<b>JCB JS220</b></span>
+          <span>SVARS<b>22 t</b></span>
+          <span>TARIFS<b>h / d</b></span>
+          <span>OPER.<b>opcija</b></span>
+        </div>
+      </div>
+      <div>
+        <div class="cta"><span>JCB · 22t</span><a href="contact.html">Cena →</a></div>
+      </div>
+    </article>
+
+    <article class="svc-block" id="s09">
+      <div class="ix">09</div>
+      <div>
+        <h3>Mašīnu un tehnikas transportēšana</h3>
+        <p>Speciāli treileri smagajai tehnikai — ekskavatori, frontālie iekrāvēji, automašīnas. Iekraušana ar manipulatoru vai pa rampu.</p>
+        <div class="tag">// VEH · LO-LOADER</div>
+      </div>
+      <div>
+        <div class="specs">
+          <span>TIPS<b>lo-loader</b></span>
+          <span>VIEN.<b>1–3 / brauc.</b></span>
+          <span>IEKR.<b>man. · rampa</b></span>
+          <span>REĢ.<b>EU + N</b></span>
+        </div>
+      </div>
+      <div>
+        <div class="cta"><span>VEH · 3 un.</span><a href="contact.html">Cena →</a></div>
+      </div>
+    </article>
+
+    <article class="svc-block" id="s10">
+      <div class="ix">10</div>
+      <div>
+        <h3>Pavadošais transports</h3>
+        <p>VW Crafter un MAN TGE pavadošie auto lielgabarīta kravām. Saskaņojumi ar CSDD un valsts policiju. Pieredzējuši šoferi, kas zina maršrutus.</p>
+        <div class="tag">// ESC · LIGHT VAN</div>
+      </div>
+      <div>
+        <div class="specs">
+          <span>AUTO<b>VW C · MAN TGE</b></span>
+          <span>VIEN.<b>1–4 / reiss</b></span>
+          <span>SASK.<b>CSDD · policija</b></span>
+          <span>NAKTS<b>opcija</b></span>
+        </div>
+      </div>
+      <div>
+        <div class="cta"><span>ESC · 4 un.</span><a href="contact.html">Cena →</a></div>
+      </div>
+    </article>
+
+    <article class="svc-block" id="s11">
+      <div class="ix">11</div>
+      <div>
+        <h3>Noliktavu pakalpojumi</h3>
+        <p>Slēgtas un atklātas noliktavas Rīgā. Cross-docking, pārkraušana, sašķirošana, īstermiņa uzglabāšana. Inventāra uzskaite klienta ERP sistēmā.</p>
+        <div class="tag">// WHS · CROSSDOCK</div>
+      </div>
+      <div>
+        <div class="specs">
+          <span>PLATĪBA<b>2 400 m²</b></span>
+          <span>TIPS<b>slēgta · atkl.</b></span>
+          <span>FUNK.<b>cross · sort.</b></span>
+          <span>ERP<b>integr.</b></span>
+        </div>
+      </div>
+      <div>
+        <div class="cta"><span>WHS · 2400m²</span><a href="contact.html">Cena →</a></div>
+      </div>
+    </article>
+
+    <article class="svc-block feat" id="s12">
+      <div class="ix">12</div>
+      <div>
+        <h3>Moduļu māju piegāde · B2C</h3>
+        <p>Jaunais B2C virziens — pacelšana no ražotāja, transports, izkraušana ar krānu uz pamatiem. Trīs cenu paketes ar fiksētu cenu pēc attāluma.</p>
+        <div class="tag" style="color:rgba(11,11,11,0.65)">// B2C · 3 PAKETES</div>
+      </div>
+      <div>
+        <div class="specs">
+          <span>PAK.A<b>līdz 50 km</b></span>
+          <span>PAK.B<b>līdz 200 km</b></span>
+          <span>PAK.C<b>pielāgota</b></span>
+          <span>IZKR.<b>uz pamatiem</b></span>
+        </div>
+      </div>
+      <div>
+        <div class="cta"><span>B2C · 3 pak.</span><a href="contact.html?aud=b2c" style="background:var(--ink);color:var(--yellow);border-color:var(--ink)">Aprēķināt →</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="cta-bar">
+  <div class="inner">
+    <div>
+      <div class="eyebrow" style="margin-bottom:16px">// SLA: 4H RESPONSE</div>
+      <h2>Aprakstiet kravu —<br/>piedāvājums 4 stundās.</h2>
+    </div>
+    <div class="ctas">
+      <a href="contact.html" class="btn btn-primary">Pieprasīt piedāvājumu <span class="arr">→</span></a>
+      <a href="tel:+37129242181" class="btn btn-ghost">+371 29 242 181 <span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="foot-top">
+    <div>
+      <h5>// DLL-TRANSPORTS</h5>
+      <span class="big">Heavy haul,<br/>since 2004.</span>
+      <p>SIA DLL-Transports · Reģ. Nr. 40103XXXXXX · Krimuldas iela 7, Rīga, LV-1039.</p>
+    </div>
+    <div>
+      <h5>// PAKALPOJUMI</h5>
+      <ul>
+        <li><a href="services.html#s01">01 · Treileri</a></li>
+        <li><a href="services.html#s03">03 · Lielgabarīta</a></li>
+        <li><a href="services.html#s05">05 · Autoceltnis</a></li>
+        <li><a href="services.html#s06">06 · Ekspress</a></li>
+        <li><a href="services.html#s12">12 · Moduļu mājas</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>// UZŅĒMUMS</h5>
+      <ul>
+        <li><a href="#">Par mums</a></li>
+        <li><a href="#">Autoparks</a></li>
+        <li><a href="#">Projekti</a></li>
+        <li><a href="#">Karjera</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>// KONTAKTI</h5>
+      <ul>
+        <li><a href="tel:+37129242181">+371 29 242 181</a></li>
+        <li><a href="mailto:dlltransports@gmail.com">dlltransports@gmail.com</a></li>
+        <li>Krimuldas iela 7<br/>Rīga, LV-1039</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <div>© 2026 SIA DLL-Transports.</div>
+    <div>v.C · Heavy industry · Pakalpojumi</div>
+  </div>
+</footer>
+
+<div id="tweaks-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="../tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks.jsx"></script>
+</body>
+</html>

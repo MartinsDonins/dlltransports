@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Kontakti · DLL-Transports SYS 03</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-head">
+  <div class="head-bar">
+    <div class="left">
+      <span class="live">DISPATCH · LIVE 24/7</span>
+      <span class="pipe">·</span>
+      <span>+371 29 242 181</span>
+    </div>
+    <div class="right">
+      <span>SYS.STATUS: NOMINAL</span>
+      <div class="lang">
+        <button class="on">LV</button>
+        <button>EN</button>
+        <button>RU</button>
+        <button>DE</button>
+      </div>
+    </div>
+  </div>
+  <div class="head-main">
+    <a href="home.html" class="brand">
+      <div class="brand-mark">D</div>
+      <div class="brand-text">DLL-Transports<small>SYS · 03 · HEAVY HAUL</small></div>
+    </a>
+    <nav class="primary">
+      <a href="home.html"><span class="ix">01</span>Sākums</a>
+      <a href="services.html"><span class="ix">02</span>Pakalpojumi</a>
+      <a href="#"><span class="ix">03</span>Autoparks</a>
+      <a href="#"><span class="ix">04</span>Projekti</a>
+      <a href="contact.html" class="active"><span class="ix">05</span>Kontakti</a>
+    </nav>
+    <div class="head-cta">
+      <a href="tel:+37129242181">[ +371 29 242 181 ]</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="inner">
+    <div>
+      <div class="crumb"><a href="home.html">Sākums</a> &nbsp;/&nbsp;&nbsp;<span style="color:var(--ink)">Kontakti</span></div>
+      <h1>Pieprasīt<br/>piedāvājumu.</h1>
+      <div class="mono" style="margin-top:24px">// SLA <b>4h response</b> · Pn–Pk 08:00–18:00 · Ārpus darba — tieši dispatch</div>
+    </div>
+    <div>
+      <p class="lede">Forma → pieprasījuma kartīte → cenu piedāvājums 4 stundu laikā. Bez "atzvanīsim", bez "atsūtīsim katalogu".</p>
+      <div style="display:flex;gap:14px;margin-top:24px;flex-wrap:wrap">
+        <a href="tel:+37129242181" class="btn btn-primary">Zvanīt tagad <span class="arr">↗</span></a>
+        <a href="mailto:dlltransports@gmail.com" class="btn btn-yellow">E-pasts <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-grid">
+  <form class="contact-form" onsubmit="event.preventDefault();alert('Demo · forma neaktīva')">
+    <div class="mono" style="margin-bottom:18px">// REQUEST FORM · TYPE: QUOTE</div>
+    <div class="aud-toggle">
+      <button type="button" class="on" data-aud="b2b">
+        TYPE_A · B2B
+        <b>Uzņēmums</b>
+      </button>
+      <button type="button" data-aud="b2c">
+        TYPE_B · B2C
+        <b>Moduļu māja</b>
+      </button>
+    </div>
+
+    <div class="form-2">
+      <div class="form-row">
+        <label for="f-name">01 · VĀRDS</label>
+        <input id="f-name" type="text" placeholder="Jānis Bērziņš" />
+      </div>
+      <div class="form-row">
+        <label for="f-co">02 · UZŅĒMUMS</label>
+        <input id="f-co" type="text" placeholder="SIA Piemērs" />
+      </div>
+    </div>
+
+    <div class="form-2">
+      <div class="form-row">
+        <label for="f-mail">03 · E-PASTS</label>
+        <input id="f-mail" type="email" placeholder="j.berzins@piemers.lv" />
+      </div>
+      <div class="form-row">
+        <label for="f-phone">04 · TĀLRUNIS</label>
+        <input id="f-phone" type="tel" placeholder="+371 2X XXX XXX" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="f-svc">05 · PAKALPOJUMS</label>
+      <select id="f-svc">
+        <option>— SELECT_SVC —</option>
+        <option>01 · Treilera pārvadājums</option>
+        <option>02 · Starptautisks pārvadājums</option>
+        <option>03 · Lielgabarīta krava</option>
+        <option>04 · Manipulators</option>
+        <option>05 · Ceļamkrāns</option>
+        <option>06 · Ekspress piegāde</option>
+        <option>07 · Konteinerus / atkritumus</option>
+        <option>08 · Būvtehnika</option>
+        <option>09 · Mašīnu transports</option>
+        <option>10 · Pavadošais transports</option>
+        <option>11 · Noliktava</option>
+        <option>12 · Moduļu mājas piegāde</option>
+      </select>
+    </div>
+
+    <div class="form-2">
+      <div class="form-row">
+        <label for="f-from">06 · NO (VIETA)</label>
+        <input id="f-from" type="text" placeholder="Rīga, LV" />
+      </div>
+      <div class="form-row">
+        <label for="f-to">07 · UZ (VIETA)</label>
+        <input id="f-to" type="text" placeholder="Hamburga, DE" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="f-msg">08 · KRAVA · APRAKSTS</label>
+      <textarea id="f-msg" placeholder="// kas tiek pārvadāts, izmēri, svars, vēlamais termiņš…"></textarea>
+    </div>
+
+    <div style="display:flex;gap:14px;align-items:center;margin-top:16px;flex-wrap:wrap">
+      <button type="submit" class="btn btn-primary">▸ Sūtīt pieprasījumu</button>
+      <span class="mono">// SHA-LIKE: REQ#<b>auto-generated</b> · ETA: 4h</span>
+    </div>
+  </form>
+
+  <aside class="contact-info">
+    <div class="mono" style="color:var(--yellow);margin-bottom:24px">// ALTERNATE CHANNELS</div>
+
+    <div class="info-block">
+      <h5>DISPATCH · 24/7</h5>
+      <a href="tel:+37129242181" class="big">+371 29 242 181</a>
+      <p>Mārtiņš · pārvadājumu vadītājs. Atbild arī ārpus darba laika steidzamiem jautājumiem un krīzes situācijās.</p>
+    </div>
+
+    <div class="info-block">
+      <h5>E-PASTS · OFFICE</h5>
+      <a href="mailto:dlltransports@gmail.com" class="big" style="font-size:22px;letter-spacing:-0.01em">dlltransports@gmail.com</a>
+      <p>Pievienojiet bildi vai PDF ar kravas specifikācijām — piedāvājums būs precīzāks.</p>
+    </div>
+
+    <div class="info-block">
+      <h5>BĀZE · AUTOPARKS</h5>
+      <p style="font-family:var(--font-display);font-size:22px;color:#fff;line-height:1.3;margin:0 0 8px;font-weight:600;letter-spacing:-0.02em"><b>Krimuldas iela 7</b><br/>Rīga, LV-1039</p>
+      <p>Pn–Pk · 08:00–18:00. Apmeklējumiem lūdzam iepriekš sazināties.</p>
+      <p class="mono" style="color:rgba(255,255,255,0.5);margin-top:8px">// 56.962, 24.135</p>
+    </div>
+
+    <div class="info-block">
+      <h5>REKVIZĪTI</h5>
+      <p class="mono" style="color:rgba(255,255,255,0.7);font-size:12px;line-height:1.7;letter-spacing:0.04em">
+        SIA DLL-Transports<br/>
+        REĢ. 40103XXXXXX<br/>
+        PVN LV40103XXXXXX<br/>
+        SWED · LVXX HABA XXXX XXXX XXXX X
+      </p>
+    </div>
+
+  </aside>
+</section>
+
+<footer class="site-foot">
+  <div class="foot-top">
+    <div>
+      <h5>// DLL-TRANSPORTS</h5>
+      <span class="big">Heavy haul,<br/>since 2004.</span>
+      <p>SIA DLL-Transports · Reģ. Nr. 40103XXXXXX · Krimuldas iela 7, Rīga, LV-1039.</p>
+    </div>
+    <div>
+      <h5>// PAKALPOJUMI</h5>
+      <ul>
+        <li><a href="services.html#s01">01 · Treileri</a></li>
+        <li><a href="services.html#s03">03 · Lielgabarīta</a></li>
+        <li><a href="services.html#s06">06 · Ekspress</a></li>
+        <li><a href="services.html#s12">12 · Moduļu mājas</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>// UZŅĒMUMS</h5>
+      <ul>
+        <li><a href="#">Par mums</a></li>
+        <li><a href="#">Autoparks</a></li>
+        <li><a href="#">Projekti</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>// KONTAKTI</h5>
+      <ul>
+        <li><a href="tel:+37129242181">+371 29 242 181</a></li>
+        <li><a href="mailto:dlltransports@gmail.com">dlltransports@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <div>© 2026 SIA DLL-Transports.</div>
+    <div>v.C · Heavy industry · Kontakti</div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.aud-toggle button').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('.aud-toggle button').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');
+    });
+  });
+  const aud = new URLSearchParams(location.search).get('aud');
+  if (aud === 'b2c') document.querySelector('[data-aud="b2c"]')?.click();
+</script>
+
+<div id="tweaks-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="../tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks.jsx"></script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Kontakti — DLL-Transports</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-head">
+  <div class="head-bar">
+    <div class="left">
+      <span>+371 29 242 181</span>
+      <span class="pipe">|</span>
+      <span>dlltransports@gmail.com</span>
+    </div>
+    <div class="right">
+      <span>Pn–Pk · 08:00–18:00</span>
+      <div class="lang">
+        <button class="on">LV</button>
+        <button>EN</button>
+        <button>RU</button>
+        <button>DE</button>
+      </div>
+    </div>
+  </div>
+  <div class="head-main">
+    <a href="home.html" class="brand">
+      <div class="brand-mark">D</div>
+      <div class="brand-text">DLL-Transports<small>Internationale Transport &amp; Logistik</small></div>
+    </a>
+    <nav class="primary">
+      <a href="home.html">Sākums</a>
+      <a href="services.html">Pakalpojumi</a>
+      <a href="#">Autoparks</a>
+      <a href="#">Projekti</a>
+      <a href="contact.html" class="active">Kontakti</a>
+    </nav>
+    <div class="head-cta">
+      <a href="tel:+37129242181" class="btn btn-dark btn-sm">+371 29 242 181 <span class="arr">↗</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="inner">
+    <div>
+      <div class="crumb"><a href="home.html">Sākums</a> &nbsp;/&nbsp; Kontakti</div>
+      <h1>Izvēlieties<br/>savu ceļu.</h1>
+    </div>
+    <div>
+      <p class="lede">B2B (kreisajā pusē) — pārvadājumu piedāvājuma pieprasījums. B2C (labajā pusē) — moduļu mājas piegādes aprēķins ar fiksētu cenu.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-split">
+  <form class="c-half c-b2b" onsubmit="event.preventDefault();alert('Demo · B2B forma neaktīva')">
+    <div class="eyebrow" style="color:var(--mute);margin-bottom:18px">// B2B</div>
+    <h2>Pārvadājuma<br/>piedāvājums.</h2>
+    <p class="lede">Aprakstiet kravu — atbildēsim 4 stundu laikā darba dienās.</p>
+
+    <div class="form-2">
+      <div class="form-row">
+        <label for="b-name">Vārds, uzvārds</label>
+        <input id="b-name" type="text" placeholder="Jānis Bērziņš" />
+      </div>
+      <div class="form-row">
+        <label for="b-co">Uzņēmums</label>
+        <input id="b-co" type="text" placeholder="SIA Piemērs" />
+      </div>
+    </div>
+    <div class="form-2">
+      <div class="form-row">
+        <label for="b-mail">E-pasts</label>
+        <input id="b-mail" type="email" placeholder="janis@piemers.lv" />
+      </div>
+      <div class="form-row">
+        <label for="b-phone">Tālrunis</label>
+        <input id="b-phone" type="tel" placeholder="+371 2X XXX XXX" />
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="b-svc">Pakalpojums</label>
+      <select id="b-svc">
+        <option>— Izvēlieties —</option>
+        <option>Treilera pārvadājums</option>
+        <option>Starptautisks pārvadājums</option>
+        <option>Lielgabarīta krava</option>
+        <option>Manipulators</option>
+        <option>Ceļamkrāns / autoceltnis</option>
+        <option>Ekspress piegāde</option>
+        <option>Konteinerus / atkritumus</option>
+        <option>Būvtehnika</option>
+        <option>Mašīnu transports</option>
+        <option>Pavadošais transports</option>
+        <option>Noliktava</option>
+      </select>
+    </div>
+    <div class="form-2">
+      <div class="form-row">
+        <label for="b-from">No</label>
+        <input id="b-from" type="text" placeholder="Rīga, LV" />
+      </div>
+      <div class="form-row">
+        <label for="b-to">Uz</label>
+        <input id="b-to" type="text" placeholder="Hamburga, DE" />
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="b-msg">Kravas apraksts</label>
+      <textarea id="b-msg" placeholder="Izmēri, svars, vēlamais termiņš…"></textarea>
+    </div>
+    <button type="submit" class="btn btn-dark" style="margin-top:8px">Nosūtīt B2B pieprasījumu <span class="arr">→</span></button>
+  </form>
+
+  <form class="c-half c-b2c" onsubmit="event.preventDefault();alert('Demo · B2C aprēķins neaktīvs')">
+    <div class="eyebrow" style="color:var(--yellow);margin-bottom:18px">// B2C · MODUĻU MĀJA</div>
+    <h2>Moduļu mājas<br/>piegādes cena.</h2>
+    <p class="lede">Izvēlies paketi un aizpildi formu — fiksēta cena, bez sarunām.</p>
+
+    <div class="pk-pick">
+      <label>
+        <input type="radio" name="pk" />
+        <div class="nm">Pakete A — Tuvākais reģions<small>līdz 50 km no Rīgas</small></div>
+        <div class="pr">no €1 290<small>fiks. cena</small></div>
+      </label>
+      <label>
+        <input type="radio" name="pk" checked />
+        <div class="nm">Pakete B — Visa Latvija<small>līdz 200 km</small></div>
+        <div class="pr">no €1 890<small>fiks. cena</small></div>
+      </label>
+      <label>
+        <input type="radio" name="pk" />
+        <div class="nm">Pakete C — Pielāgota<small>>200 km · ārvalstis</small></div>
+        <div class="pr">€ X<small>cena pēc apr.</small></div>
+      </label>
+    </div>
+
+    <div class="form-2">
+      <div class="form-row">
+        <label for="c-name">Vārds, uzvārds</label>
+        <input id="c-name" type="text" placeholder="Jānis Bērziņš" />
+      </div>
+      <div class="form-row">
+        <label for="c-phone">Tālrunis</label>
+        <input id="c-phone" type="tel" placeholder="+371 2X XXX XXX" />
+      </div>
+    </div>
+    <div class="form-2">
+      <div class="form-row">
+        <label for="c-mail">E-pasts</label>
+        <input id="c-mail" type="email" placeholder="janis@example.lv" />
+      </div>
+      <div class="form-row">
+        <label for="c-addr">Piegādes adrese</label>
+        <input id="c-addr" type="text" placeholder="Mārupe, LV" />
+      </div>
+    </div>
+    <div class="form-2">
+      <div class="form-row">
+        <label for="c-mfr">Ražotājs / izgatav.</label>
+        <input id="c-mfr" type="text" placeholder="SIA Modulārs" />
+      </div>
+      <div class="form-row">
+        <label for="c-size">Mājas platība</label>
+        <input id="c-size" type="text" placeholder="42 m²" />
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="c-msg">Papildus info</label>
+      <textarea id="c-msg" placeholder="Pamatu tips, pieejamība u.c."></textarea>
+    </div>
+    <button type="submit" class="btn btn-yellow" style="margin-top:8px">Aprēķināt piegādi <span class="arr">→</span></button>
+  </form>
+</section>
+
+<section class="contact-info-row">
+  <div>
+    <h5>Tālrunis · 24/7 dispatch</h5>
+    <a href="tel:+37129242181" class="big">+371 29 242 181</a>
+    <p>Mārtiņš · pārvadājumu vadītājs. Atbild arī ārpus darba laika.</p>
+  </div>
+  <div>
+    <h5>E-pasts</h5>
+    <a href="mailto:dlltransports@gmail.com" class="big" style="font-size:22px">dlltransports@gmail.com</a>
+    <p>Pievienojiet bildi vai PDF — piedāvājums būs precīzāks.</p>
+  </div>
+  <div>
+    <h5>Birojs · autoparks</h5>
+    <span class="big" style="font-size:24px">Krimuldas iela 7</span>
+    <p>Rīga, LV-1039 · Pn–Pk 08–18 · iepriekš sazinies</p>
+  </div>
+</section>
+
+<footer class="site-foot" style="padding-top:64px">
+  <div class="inner">
+    <div class="foot-brand">
+      <div class="brand">
+        <div class="brand-mark">D</div>
+        <div class="brand-text" style="color:#fff">DLL-Transports<small style="color:rgba(255,255,255,0.5)">Internationale Transport &amp; Logistik</small></div>
+      </div>
+      <p>SIA DLL-Transports · Reģ. Nr. 40103XXXXXX · Krimuldas iela 7, Rīga, LV-1039.</p>
+    </div>
+    <div>
+      <h5>B2B Pakalpojumi</h5>
+      <ul>
+        <li><a href="services.html#s01">Treilera pārvadājumi</a></li>
+        <li><a href="services.html#s03">Lielgabarīta</a></li>
+        <li><a href="services.html#s06">Ekspress piegāde</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>B2C · Moduļu māja</h5>
+      <ul>
+        <li><a href="services.html#s12">Cenu paketes</a></li>
+        <li><a href="contact.html?aud=b2c">Aprēķināt</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Kontakti</h5>
+      <ul>
+        <li><a href="tel:+37129242181">+371 29 242 181</a></li>
+        <li><a href="mailto:dlltransports@gmail.com">dlltransports@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bot">
+    <div>© 2026 SIA DLL-Transports.</div>
+    <div>v.E · Split-screen · Kontakti</div>
+  </div>
+</footer>
+
+<script>
+  // package toggle
+  document.querySelectorAll('.pk-pick label').forEach(l => {
+    l.addEventListener('click', () => {
+      document.querySelectorAll('.pk-pick label').forEach(x => x.classList.remove('on'));
+      l.classList.add('on');
+    });
+  });
+  // preselect from ?aud
+  const aud = new URLSearchParams(location.search).get('aud');
+  if (aud === 'b2c') {
+    setTimeout(() => {
+      const el = document.querySelector('.c-b2c');
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+    }, 300);
+  }
+</script>
+
+<div id="tweaks-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="../tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks.jsx"></script>
+</body>
+</html>

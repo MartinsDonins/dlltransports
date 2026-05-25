@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>DLL-Transports — Dizaina varianti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --yellow:#FFD200;
+    --yellow-deep:#F5C518;
+    --orange:#FF8A00;
+    --ink:#161616;
+    --ink-2:#2C2C2C;
+    --mute:#6B6B6B;
+    --line:#E5E5E5;
+    --bg:#F4F2EE;
+  }
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  body{min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1440px;margin:0 auto;padding:32px 40px 80px}
+  .top{display:flex;align-items:center;justify-content:space-between;padding:8px 0 64px;border-bottom:1px solid var(--line);margin-bottom:48px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand-mark{width:44px;height:44px;background:var(--yellow);display:grid;place-items:center;font-family:"Space Grotesk";font-weight:700;font-size:20px;color:var(--ink);letter-spacing:-0.04em}
+  .brand-text{font-family:"Space Grotesk";font-weight:700;letter-spacing:-0.02em;font-size:18px}
+  .brand-text small{display:block;font-family:"JetBrains Mono";font-weight:400;font-size:10px;color:var(--mute);text-transform:uppercase;letter-spacing:0.14em;margin-top:2px}
+  .meta{font-family:"JetBrains Mono";font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:0.14em;text-align:right}
+  .meta strong{color:var(--ink);display:block;font-weight:500}
+  .hero{padding:24px 0 56px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end}
+  h1{font-family:"Space Grotesk";font-weight:700;font-size:clamp(48px,7vw,104px);line-height:0.92;letter-spacing:-0.035em;margin:0;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--mute);font-weight:500}
+  .lede{font-size:18px;line-height:1.55;color:var(--ink-2);max-width:46ch}
+  .lede + .lede{margin-top:18px;font-family:"JetBrains Mono";font-size:12px;line-height:1.7;letter-spacing:0.04em;color:var(--mute);text-transform:uppercase}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:0;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:520px;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 24px 60px -30px rgba(0,0,0,0.25)}
+  .card a.cover{position:absolute;inset:0;z-index:2}
+  .card-top{padding:32px 32px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+  .badge{font-family:"JetBrains Mono";font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute)}
+  .badge b{color:var(--ink);font-weight:500}
+  .arrow{width:48px;height:48px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;transition:transform .3s}
+  .card:hover .arrow{transform:translate(4px,-4px) rotate(-12deg)}
+  .arrow svg{width:18px;height:18px}
+  .preview{margin:28px 32px 0;height:200px;border:1px solid var(--line);overflow:hidden;position:relative}
+  .card-body{padding:24px 32px 32px;margin-top:auto}
+  .card-body h3{font-family:"Space Grotesk";font-size:28px;letter-spacing:-0.02em;margin:0 0 8px;font-weight:700}
+  .card-body p{font-size:14px;line-height:1.55;color:var(--mute);margin:0 0 16px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;font-family:"JetBrains Mono";font-size:10px;letter-spacing:0.08em;text-transform:uppercase}
+  .tags span{padding:5px 9px;background:var(--bg);border:1px solid var(--line);color:var(--ink-2)}
+
+  /* Variant A preview */
+  .pv-a{background:#fff}
+  .pv-a .header{height:34px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 14px;gap:12px}
+  .pv-a .dot{width:24px;height:24px;background:var(--yellow)}
+  .pv-a .nav{display:flex;gap:10px;font-size:8px;color:var(--mute);font-family:"JetBrains Mono";letter-spacing:0.12em}
+  .pv-a .body{padding:16px 14px}
+  .pv-a .h{font-family:"Space Grotesk";font-weight:700;font-size:22px;line-height:0.95;letter-spacing:-0.03em;color:var(--ink)}
+  .pv-a .h .y{background:var(--yellow);padding:0 4px}
+  .pv-a .ctas{display:flex;gap:6px;margin-top:10px}
+  .pv-a .ctas .b{padding:5px 8px;font-size:8px;font-family:"JetBrains Mono";letter-spacing:0.08em;text-transform:uppercase}
+  .pv-a .ctas .b1{background:var(--ink);color:#fff}
+  .pv-a .ctas .b2{border:1px solid var(--ink);color:var(--ink)}
+  .pv-a .row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:14px}
+  .pv-a .row > div{height:30px;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--mute);font-family:"JetBrains Mono"}
+
+  /* Variant C preview — brutalist */
+  .pv-c{background:#F1EFE7;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:16px 16px;color:#0E0E0E;position:relative}
+  .pv-c::after{content:"// SYSTEM 03 — HEAVY HAUL";position:absolute;top:8px;right:10px;font-family:"JetBrains Mono";font-size:8px;letter-spacing:0.1em;color:#0E0E0E;opacity:0.5}
+  .pv-c .b1{position:absolute;top:24px;left:14px;font-family:"JetBrains Mono";font-size:9px;letter-spacing:0.12em;color:#0E0E0E}
+  .pv-c .num{position:absolute;left:14px;bottom:20px;font-family:"Space Grotesk";font-weight:700;font-size:60px;line-height:0.85;letter-spacing:-0.04em}
+  .pv-c .num em{font-style:normal;font-size:14px;font-family:"JetBrains Mono";vertical-align:top;display:inline-block;margin-left:6px;color:var(--mute)}
+  .pv-c .tag{position:absolute;right:14px;bottom:24px;background:var(--yellow);color:#000;padding:6px 10px;font-family:"JetBrains Mono";font-size:9px;letter-spacing:0.12em;text-transform:uppercase}
+
+  /* Variant D preview — dark */
+  .pv-d{background:#0E0E0E;color:#fff;position:relative;overflow:hidden}
+  .pv-d::before{content:"";position:absolute;left:-30px;top:30%;width:80px;height:80px;background:var(--yellow);filter:blur(0)}
+  .pv-d .grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:24px 24px}
+  .pv-d .label{position:absolute;top:14px;left:14px;font-family:"JetBrains Mono";font-size:9px;letter-spacing:0.16em;color:var(--yellow);text-transform:uppercase}
+  .pv-d .label::before{content:"●";color:var(--yellow);margin-right:6px}
+  .pv-d .hh{position:absolute;left:14px;bottom:50px;font-family:"Space Grotesk";font-weight:700;font-size:30px;line-height:0.9;letter-spacing:-0.035em;width:calc(100% - 28px)}
+  .pv-d .hh u{text-decoration:none;color:var(--yellow)}
+  .pv-d .pill{position:absolute;left:14px;bottom:18px;font-family:"JetBrains Mono";font-size:9px;color:#999;letter-spacing:0.12em}
+  .pv-d .pill::after{content:" →";color:var(--yellow)}
+
+  /* Variant E preview — split */
+  .pv-e{display:grid;grid-template-columns:1fr 1fr;height:100%}
+  .pv-e .left{background:#fff;padding:18px 14px;position:relative;border-right:1px dashed var(--line)}
+  .pv-e .right{background:#161616;color:#fff;padding:18px 14px;position:relative}
+  .pv-e .tag{font-family:"JetBrains Mono";font-size:8px;letter-spacing:0.14em;text-transform:uppercase;opacity:0.7;margin-bottom:8px}
+  .pv-e .left .tag{color:var(--mute)}
+  .pv-e .right .tag{color:var(--yellow);opacity:1}
+  .pv-e .ht{font-family:"Space Grotesk";font-weight:700;font-size:20px;line-height:0.95;letter-spacing:-0.025em}
+  .pv-e .left .ht{color:var(--ink)}
+  .pv-e .right .ht{color:#fff}
+  .pv-e .cta{position:absolute;left:14px;right:14px;bottom:18px;padding:7px 10px;font-family:"JetBrains Mono";font-size:9px;letter-spacing:0.1em;text-transform:uppercase}
+  .pv-e .left .cta{background:var(--ink);color:#fff}
+  .pv-e .right .cta{background:var(--yellow);color:#000}
+
+  .foot{margin-top:64px;padding-top:32px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;font-family:"JetBrains Mono";font-size:11px;color:var(--mute);letter-spacing:0.06em;text-transform:uppercase}
+  .foot strong{color:var(--ink);display:block;margin-bottom:6px;font-weight:500}
+  @media (max-width: 900px){
+    .hero{grid-template-columns:1fr;gap:24px}
+    .grid{grid-template-columns:1fr}
+    .foot{grid-template-columns:1fr}
+    .wrap{padding:20px}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <div class="brand-mark">D</div>
+        <div class="brand-text">
+          DLL-Transports
+          <small>Dizaina pārskats · 2026</small>
+        </div>
+      </div>
+      <div class="meta">
+        <strong>4 dizaina virzieni</strong>
+        Sākumlapa · Pakalpojumi · Kontakti
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Četri virzieni vienam pārvadājumu <em>uzņēmumam.</em></h1>
+      <div>
+        <p class="lede">Katrs variants balstīts uzņēmuma 20 gadu pieredzē, dzeltenajā autoparkā un divos auditorijas ceļos — B2B kravu pārvadājumos un B2C moduļu māju piegādē.</p>
+        <p class="lede">// Open any card · 3 lapas katrā · Tweaks panelis pieejams labajā stūrī</p>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <article class="card">
+        <a class="cover" href="variant-a/home.html" aria-label="Atvērt variantu A"></a>
+        <div class="card-top">
+          <div class="badge"><b>VARIANTS A</b> · 01 / 04</div>
+          <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="preview pv-a">
+          <div class="header">
+            <div class="dot"></div>
+            <div class="nav"><span>SĀKUMS</span><span>PAKALPOJUMI</span><span>AUTOPARKS</span><span>KONTAKTI</span></div>
+          </div>
+          <div class="body">
+            <div class="h">Smagi, bet <span class="y">precīzi</span><br/>pārvadājumi.</div>
+            <div class="ctas">
+              <div class="b b1">Pieprasīt piedāvājumu →</div>
+              <div class="b b2">Moduļu mājas piegāde</div>
+            </div>
+            <div class="row"><div>20+ gadi</div><div>10+ vienības</div><div>EU mērogā</div></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Klasisks. Premium industrial.</h3>
+          <p>Drošs, "boardroom" izpildījums tuvu zīmola piedāvājumu PDF stilam. Liels foto, dzeltenas bultas, plašs grids — bez riska, bet profesionāli.</p>
+          <div class="tags"><span>Manrope · Space Grotesk</span><span>Light bg</span><span>Yellow + Anthracite</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="cover" href="variant-c/home.html" aria-label="Atvērt variantu C"></a>
+        <div class="card-top">
+          <div class="badge"><b>VARIANTS C</b> · 02 / 04</div>
+          <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="preview pv-c">
+          <div class="b1">// FLEET STATUS</div>
+          <div class="num">10<em>+</em></div>
+          <div class="tag">HEAVY HAUL</div>
+        </div>
+        <div class="card-body">
+          <h3>Heavy-industry. Brutalist data.</h3>
+          <p>Monospace, redzami grida līnijas, lieli skaitļi, terminal-like UI. Uzņēmums kā precīza, mērāma sistēma. Drosmīgs, bet ne dekoratīvs.</p>
+          <div class="tags"><span>JetBrains Mono · Space Grotesk</span><span>Grid bg</span><span>Datu pirmkārtība</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="cover" href="variant-d/home.html" aria-label="Atvērt variantu D"></a>
+        <div class="card-top">
+          <div class="badge"><b>VARIANTS D</b> · 03 / 04</div>
+          <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="preview pv-d">
+          <div class="grid-lines"></div>
+          <div class="label">Live · 24/7 dispatch</div>
+          <div class="hh">Mēs braucam, <u>kad pārējie stāv.</u></div>
+          <div class="pill">Pieprasīt piedāvājumu</div>
+        </div>
+        <div class="card-body">
+          <h3>Dark-first. Signāla dzeltens.</h3>
+          <p>Antracīta fons, dzeltenā kā uguns signāls, kinematogrāfisks autoparka foto. Premium, kā vakara TV reklāma loģistikas līderim.</p>
+          <div class="tags"><span>Manrope · Anton</span><span>Dark bg</span><span>Cinematic</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="cover" href="variant-e/home.html" aria-label="Atvērt variantu E"></a>
+        <div class="card-top">
+          <div class="badge"><b>VARIANTS E</b> · 04 / 04</div>
+          <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="preview pv-e">
+          <div class="left">
+            <div class="tag">B2B · Uzņēmumiem</div>
+            <div class="ht">Regulāri kravu pārvadājumi.</div>
+            <div class="cta">Pieprasīt piedāvājumu</div>
+          </div>
+          <div class="right">
+            <div class="tag">B2C · Privāt­personām</div>
+            <div class="ht">Moduļu mājas piegāde.</div>
+            <div class="cta">Aprēķināt cenu</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>Split-screen. Divas pasaules.</h3>
+          <p>50/50 sadalījums starp B2B un B2C jau no pirmā ekrāna. Editorial layout, kontrastējoši fons-toni, vienlīdzīga uzmanība abām auditorijām.</p>
+          <div class="tags"><span>DM Sans · Plus Jakarta Sans</span><span>Dual surfaces</span><span>Editorial</span></div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="foot">
+      <div><strong>Brīfs</strong>SIA DLL-Transports · Internationale Transport und Logistik · 20+ gadi · Latvija → ES</strong></div>
+      <div><strong>Vērtības</strong>Punktualitāte · Kompetence · Kvalitāte</div>
+      <div><strong>Tehniski</strong>Mobile-first · Lighthouse ≥ 90 · WordPress (Bricks / Breakdance)</div>
+    </div>
+  </div>
+</body>
+</html>
