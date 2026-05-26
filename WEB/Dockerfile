@@ -13,6 +13,9 @@ COPY variant-c/ /usr/share/nginx/html/variant-c/
 COPY variant-d/ /usr/share/nginx/html/variant-d/
 COPY variant-e/ /usr/share/nginx/html/variant-e/
 
+# Static snapshot of the current production site (served at /old/)
+COPY OLD/ /usr/share/nginx/html/old/
+
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
