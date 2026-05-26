@@ -53,6 +53,11 @@ build/
 .next/
 .turbo/
 
+# ─── Exceptions: legacy site snapshot uses dist/ as a real asset folder ─────
+# (Duda mirror saves runtime CSS/JS under mnlt/.../_dm/s/rt/dist/)
+!WEB/OLD/**/dist/
+!WEB/OLD/**/dist/**
+
 # ─── PHP / Composer ─────────────────────────────────────────────────────────
 vendor/
 composer.phar
