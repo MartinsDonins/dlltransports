@@ -17,6 +17,7 @@ COPY variant-a/ /usr/share/nginx/html/variant-a/
 COPY variant-c/ /usr/share/nginx/html/variant-c/
 COPY variant-d/ /usr/share/nginx/html/variant-d/
 COPY variant-e/ /usr/share/nginx/html/variant-e/
+COPY variant-f/ /usr/share/nginx/html/variant-f/
 
 # Static snapshot of the current production site (served at /old/)
 COPY OLD/ /usr/share/nginx/html/old/

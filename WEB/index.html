@@ -86,6 +86,18 @@
   .pv-d .pill{position:absolute;left:14px;bottom:18px;font-family:"JetBrains Mono";font-size:9px;color:#999;letter-spacing:0.12em}
   .pv-d .pill::after{content:" →";color:var(--yellow)}
 
+  /* Variant F preview — apvienotais (dark clean, real photo) */
+  .pv-f{background:#0B0B0C;color:#fff;position:relative;overflow:hidden}
+  .pv-f .ph{position:absolute;inset:0;background:url('variant-f/img/hero.jpg') center 35%/cover no-repeat;opacity:0.55}
+  .pv-f::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,0.25) 0%,rgba(11,11,12,0.9) 100%)}
+  .pv-f .label{position:absolute;top:14px;left:14px;z-index:2;font-family:"JetBrains Mono";font-size:9px;letter-spacing:0.16em;color:var(--yellow);text-transform:uppercase}
+  .pv-f .label::before{content:"●";color:var(--yellow);margin-right:6px}
+  .pv-f .hh{position:absolute;left:14px;bottom:44px;z-index:2;font-family:"Space Grotesk";font-weight:700;font-size:26px;line-height:0.95;letter-spacing:-0.03em;width:calc(100% - 28px)}
+  .pv-f .hh u{text-decoration:none;color:var(--yellow)}
+  .pv-f .cta{position:absolute;left:14px;bottom:14px;z-index:2;background:var(--yellow);color:#000;padding:6px 12px;border-radius:999px;font-family:"JetBrains Mono";font-size:9px;letter-spacing:0.1em;text-transform:uppercase}
+  .card.feat-f{border:2px solid var(--yellow);box-shadow:0 24px 60px -30px rgba(245,197,24,0.35)}
+  .card.feat-f .badge .new{color:#B8860B;font-weight:600}
+
   /* Variant E preview — split */
   .pv-e{display:grid;grid-template-columns:1fr 1fr;height:100%}
   .pv-e .left{background:#fff;padding:18px 14px;position:relative;border-right:1px dashed var(--line)}
@@ -121,7 +133,7 @@
         </div>
       </div>
       <div class="meta">
-        <strong>4 dizaina virzieni</strong>
+        <strong>4 virzieni + apvienotais F</strong>
         Sākumlapa · Pakalpojumi · Kontakti
       </div>
     </div>
@@ -129,12 +141,31 @@
     <div class="hero">
       <h1>Četri virzieni vienam pārvadājumu <em>uzņēmumam.</em></h1>
       <div>
-        <p class="lede">Katrs variants balstīts uzņēmuma 20 gadu pieredzē, dzeltenajā autoparkā un divos auditorijas ceļos — B2B kravu pārvadājumos un B2C moduļu māju piegādē.</p>
-        <p class="lede">// Open any card · 3 lapas katrā · Tweaks panelis pieejams labajā stūrī</p>
+        <p class="lede">Katrs variants balstīts uzņēmuma 20 gadu pieredzē, dzeltenajā autoparkā un divos auditorijas ceļos — B2B kravu pārvadājumos un B2C moduļu māju piegādē. <b>Jaunākais — variants F</b>, apvienots no D un A pēc jūsu atsauksmēm.</p>
+        <p class="lede">// Open any card · 3 lapas katrā</p>
       </div>
     </div>
 
     <div class="grid">
+
+      <article class="card feat-f">
+        <a class="cover" href="variant-f/home.html" aria-label="Atvērt variantu F"></a>
+        <div class="card-top">
+          <div class="badge"><b>VARIANTS F</b> · <span class="new">JAUNS — pēc jūsu atsauksmēm</span></div>
+          <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="preview pv-f">
+          <div class="ph"></div>
+          <div class="label">Apvienotais · D + A</div>
+          <div class="hh">Tumšs. Tīrs. <u>Reālās bildes.</u></div>
+          <div class="cta">Pieprasīt piedāvājumu →</div>
+        </div>
+        <div class="card-body">
+          <h3>Apvienotais. Tumšs + klasisks.</h3>
+          <p>D tumšā noskaņa + A tīrība, bez rūtiņām un split-screen. Jūsu reālās autoparka bildes, tehniskie rasējumi, partneri un realizētie projekti.</p>
+          <div class="tags"><span>Manrope</span><span>Dark bg</span><span>Reālās DLL bildes</span><span>Rasējumi</span></div>
+        </div>
+      </article>
 
       <article class="card">
         <a class="cover" href="variant-a/home.html" aria-label="Atvērt variantu A"></a>
