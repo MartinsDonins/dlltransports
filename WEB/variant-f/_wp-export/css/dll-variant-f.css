@@ -1,0 +1,306 @@
+/* ==========================================================================
+   DLL-Transports — Variant F → WordPress (coredigify-wp, theme-independent)
+   --------------------------------------------------------------------------
+   VISS ir scoped zem .dllf, lai NESABOJĀTU WP tēmu / Divi / admin.
+   Katras lapas saturs jāietin: <div class="dllf"> ... </div>
+   Fontus ielādē @import (theme-independent CSS nevar pievienot <link>).
+   Krāsu mainīgie (:root) ir globāli — tas ir drošs (tikai mainīgie, ne stili);
+   inline style="color:var(--yellow)" HTML iekšā paļaujas uz tiem.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+/* ==========================================================================
+   WP HOST-TĒMAS INTEGRĀCIJA (Twenty Twenty-Five, block theme)
+   Mūsu dizainam ir SAVS header + footer → noslēpjam tēmas chrome,
+   noņemam virsrakstu un satura platuma ierobežojumu, lai dizains iet
+   edge-to-edge (1:1). Ja tēma kādreiz mainās, šo bloku pielāgo.
+   ========================================================================== */
+.wp-site-blocks{overflow-x:clip;}                                            /* aiztur 100vw breakout ritjoslu (clip nelauž sticky) */
+.wp-site-blocks > .wp-block-template-part{display:none !important;}          /* tēmas header + footer */
+.wp-site-blocks > main{margin-top:0 !important;}                             /* noņem block-gap virs satura */
+.wp-block-post-title{display:none !important;}                               /* dublētais lapas virsraksts */
+.wp-block-post-content{max-width:none !important;margin:0 !important;padding-left:0 !important;padding-right:0 !important;}
+.wp-site-blocks{--wp--style--root--padding-left:0 !important;--wp--style--root--padding-right:0 !important;}
+.wp-site-blocks .has-global-padding{padding-top:0 !important;padding-bottom:0 !important;} /* noņem TT5 globālo augšas/apakšas atstarpi */
+.dllf{max-width:none !important;}                                            /* pārvar TT5 constrained :where() max-width uz bērna */
+body .dllf{margin-inline:calc(50% - 50vw);}                                  /* full-bleed breakout */
+
+
+:root{
+  --yellow:#FFD200;
+  --yellow-deep:#F5C518;
+  --orange:#FF7A00;
+  --ink:#FFFFFF;
+  --bg:#0B0B0C;
+  --bg-2:#121214;
+  --bg-3:#1B1B1E;
+  --line:rgba(255,255,255,0.10);
+  --line-2:rgba(255,255,255,0.05);
+  --mute:rgba(255,255,255,0.58);
+  --soft:rgba(255,255,255,0.35);
+  --max:1440px;
+  --font-display:"Manrope",system-ui,sans-serif;
+  --font-body:"Manrope",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+
+/* ====== Reset / base (scoped) ====== */
+.dllf,.dllf *,.dllf *::before,.dllf *::after{box-sizing:border-box}
+.dllf{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);-webkit-font-smoothing:antialiased;line-height:1.5}
+.dllf a{color:inherit;text-decoration:none}
+.dllf img{max-width:100%;display:block}
+.dllf button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.dllf ::selection{background:var(--yellow);color:#000}
+
+/* ====== Header ====== */
+.dllf .site-head{position:sticky;top:0;z-index:50;background:rgba(11,11,12,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.dllf .head-bar{display:flex;align-items:center;justify-content:space-between;padding:8px 32px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);border-bottom:1px solid var(--line-2)}
+.dllf .head-bar a{color:var(--mute)}
+.dllf .head-bar .pipe{margin:0 12px;opacity:0.4}
+.dllf .head-bar .right{display:flex;align-items:center;gap:18px}
+.dllf .head-bar .live{display:inline-flex;align-items:center;gap:8px;color:var(--yellow)}
+.dllf .head-bar .live::before{content:"";width:6px;height:6px;background:var(--yellow);border-radius:50%;animation:pulseF 1.4s infinite}
+@keyframes pulseF{0%,100%{opacity:1}50%{opacity:0.3}}
+.dllf .lang{display:inline-flex;border:1px solid var(--line);overflow:hidden;border-radius:999px}
+.dllf .lang a,.dllf .lang button{padding:3px 9px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;color:var(--mute);background:transparent;text-decoration:none;display:inline-flex;align-items:center}
+.dllf .lang a.on,.dllf .lang button.on{background:var(--yellow);color:#000}
+.dllf .head-main{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;gap:24px;max-width:var(--max);margin:0 auto}
+.dllf .brand{display:flex;align-items:center;gap:14px}
+.dllf .brand-mark{width:44px;height:44px;background:var(--yellow);color:#000;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-0.05em;border-radius:10px}
+.dllf .brand-text{font-family:var(--font-display);font-weight:800;letter-spacing:-0.02em;font-size:18px;line-height:1}
+.dllf .brand-text small{display:block;font-family:var(--font-mono);font-weight:400;font-size:10px;color:var(--mute);text-transform:uppercase;letter-spacing:0.14em;margin-top:4px}
+.dllf nav.primary{display:flex;gap:4px}
+.dllf nav.primary a{padding:10px 16px;font-size:14px;font-weight:500;color:var(--mute);border-radius:999px;transition:background .2s,color .2s}
+.dllf nav.primary a:hover{color:var(--ink);background:var(--bg-3)}
+.dllf nav.primary a.active{color:#000;background:var(--yellow);font-weight:600}
+
+/* ====== Buttons ====== */
+.dllf .btn{display:inline-flex;align-items:center;gap:12px;padding:14px 22px;font-family:var(--font-body);font-weight:600;font-size:14px;border-radius:999px;transition:transform .2s,background .2s,color .2s,box-shadow .25s}
+.dllf .btn .arr{transition:transform .25s}
+.dllf .btn:hover .arr{transform:translateX(3px)}
+.dllf .btn-primary{background:var(--yellow);color:#000}
+.dllf .btn-primary:hover{background:#fff;box-shadow:0 18px 40px -16px rgba(255,210,0,0.5)}
+.dllf .btn-ghost{border:1px solid var(--line);color:var(--ink)}
+.dllf .btn-ghost:hover{background:var(--bg-3);border-color:var(--ink)}
+.dllf .btn-outline-yellow{border:1px solid var(--yellow);color:var(--yellow)}
+.dllf .btn-outline-yellow:hover{background:var(--yellow);color:#000}
+.dllf .btn-sm{padding:9px 16px;font-size:13px}
+
+/* ====== Typography ====== */
+.dllf h1,.dllf h2,.dllf h3,.dllf h4{font-family:var(--font-display);font-weight:800;letter-spacing:-0.035em;margin:0;color:#fff;text-wrap:balance}
+.dllf h1{font-size:clamp(54px,7.5vw,118px);line-height:0.94;letter-spacing:-0.045em}
+.dllf h2{font-size:clamp(40px,5vw,76px);line-height:0.98;letter-spacing:-0.04em}
+.dllf h3{font-size:32px;line-height:1.05;letter-spacing:-0.025em}
+.dllf h4{font-size:20px;line-height:1.2;font-weight:700;letter-spacing:-0.015em}
+.dllf p{margin:0 0 1em;color:var(--mute);font-size:17px;line-height:1.6;text-wrap:pretty}
+.dllf .lede{font-size:20px;line-height:1.55;color:rgba(255,255,255,0.8);max-width:54ch}
+.dllf .eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--yellow);display:inline-flex;align-items:center;gap:10px}
+.dllf .eyebrow::before{content:"";width:24px;height:1px;background:var(--yellow)}
+.dllf .mute{color:var(--mute)}
+
+/* ====== Section ====== */
+.dllf .section{padding:110px 32px}
+.dllf .section.tight{padding:64px 32px}
+.dllf .section.alt{background:var(--bg-2)}
+.dllf .section.light{background:#F7F6F3;color:#111}
+.dllf .section.light h2,.dllf .section.light h3,.dllf .section.light h4{color:#111}
+.dllf .section.light p{color:#4A4A4A}
+.dllf .section.light .eyebrow{color:#B8860B}
+.dllf .section.light .eyebrow::before{background:#B8860B}
+.dllf .inner{max-width:var(--max);margin:0 auto}
+.dllf .sec-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:56px;gap:32px;flex-wrap:wrap}
+.dllf .sec-head .lede{margin:0}
+
+/* ====== Hero ====== */
+.dllf .hero{position:relative;min-height:760px;overflow:hidden;display:flex;align-items:flex-end}
+.dllf .hero-bg{position:absolute;inset:0;z-index:0}
+.dllf .hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.dllf .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,0.35) 0%,rgba(11,11,12,0.15) 45%,rgba(11,11,12,0.95) 100%)}
+.dllf .hero-inner{position:relative;z-index:2;max-width:var(--max);margin:0 auto;padding:72px 32px 56px;width:100%;display:flex;flex-direction:column;gap:42px}
+.dllf .hero-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(0,0,0,0.45);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:8px 16px;border-radius:999px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--yellow);border:1px solid var(--line);width:fit-content}
+.dllf .hero-tag::before{content:"";width:7px;height:7px;background:var(--yellow);border-radius:50%;animation:pulseF 1.4s infinite}
+.dllf .hero h1{max-width:16ch}
+.dllf .hero h1 em{font-style:normal;color:var(--yellow)}
+.dllf .hero-meta{display:flex;justify-content:space-between;align-items:end;gap:48px;flex-wrap:wrap}
+.dllf .hero-meta .lede{margin:0;max-width:46ch}
+.dllf .hero-meta .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.dllf .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.dllf .hero-stats .cell{padding:24px 28px;background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--line);border-radius:18px}
+.dllf .hero-stats .cell .lbl{font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.dllf .hero-stats .cell .v{font-family:var(--font-display);font-weight:800;font-size:42px;letter-spacing:-0.045em;line-height:1;color:#fff}
+.dllf .hero-stats .cell .v em{font-style:normal;color:var(--yellow);font-size:17px;font-family:var(--font-mono);letter-spacing:0;vertical-align:top;display:inline-block;margin-left:6px}
+.dllf .hero-stats .cell .sub{font-size:13px;color:var(--mute);margin-top:6px;line-height:1.4}
+
+/* ====== USP ====== */
+.dllf .usp{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.dllf .usp-card{padding:44px 36px;background:var(--bg-2);border:1px solid var(--line-2);border-radius:22px;display:flex;flex-direction:column;gap:16px;min-height:300px;transition:border-color .25s}
+.dllf .usp-card:hover{border-color:var(--yellow)}
+.dllf .usp-card .ix{font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;color:var(--yellow);text-transform:uppercase}
+.dllf .usp-card h3{font-size:40px;letter-spacing:-0.035em;line-height:0.98}
+.dllf .usp-card .data{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;color:var(--mute);text-transform:uppercase;margin-top:auto;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:end}
+.dllf .usp-card .data b{font-family:var(--font-display);font-weight:800;font-size:22px;letter-spacing:-0.02em;color:#fff}
+.dllf .usp-card.feat{background:var(--yellow);border-color:var(--yellow)}
+.dllf .usp-card.feat h3{color:#000}
+.dllf .usp-card.feat .ix{color:rgba(0,0,0,0.65)}
+.dllf .usp-card.feat p{color:rgba(0,0,0,0.72)}
+.dllf .usp-card.feat .data{color:rgba(0,0,0,0.6);border-color:rgba(0,0,0,0.18)}
+.dllf .usp-card.feat .data b{color:#000}
+
+/* ====== Services grid ====== */
+.dllf .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.dllf .svc{background:var(--bg);border:1px solid var(--line-2);border-radius:18px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;min-height:220px;transition:border-color .25s,background .25s}
+.dllf .svc:hover{border-color:var(--yellow);background:var(--bg-3)}
+.dllf .svc .ix{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--soft);text-transform:uppercase}
+.dllf .svc .ico{width:42px;height:42px;background:var(--bg-3);border:1px solid var(--line-2);border-radius:12px;display:grid;place-items:center;color:var(--yellow);transition:background .25s,color .25s}
+.dllf .svc:hover .ico{background:var(--yellow);color:#000}
+.dllf .svc .ico svg{width:20px;height:20px}
+.dllf .svc h4{margin-top:auto;font-size:19px;letter-spacing:-0.02em}
+.dllf .svc p{font-size:13px;color:var(--mute);margin:0;line-height:1.45}
+.dllf .svc.feat{background:var(--yellow);border-color:var(--yellow)}
+.dllf .svc.feat .ix,.dllf .svc.feat p{color:rgba(0,0,0,0.65)}
+.dllf .svc.feat h4{color:#000}
+.dllf .svc.feat .ico{background:#000;color:var(--yellow);border:0}
+/* Stretched-link klikšķināmām kartītēm (svc/proj) — .svc un .proj-row ir <div>,
+   nevis <a>, jo <a> ap block elementiem + wpautop salauž struktūru WP. */
+.dllf .svc,.dllf .proj-row{position:relative}
+.dllf .cardlink{position:absolute;inset:0;z-index:3}
+
+/* ====== Fleet ====== */
+.dllf .fleet-strip{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:14px;margin-bottom:14px}
+.dllf .fleet-strip.b{grid-template-columns:1fr 1fr 1.5fr}
+.dllf .fleet-card{position:relative;overflow:hidden;border-radius:20px;min-height:320px;background:var(--bg-2)}
+.dllf .fleet-card.lg{min-height:420px}
+.dllf .fleet-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.dllf .fleet-card:hover img{transform:scale(1.05)}
+.dllf .fleet-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(0,0,0,0.88) 100%)}
+.dllf .fleet-card .info{position:absolute;left:0;right:0;bottom:0;padding:24px 28px;z-index:2}
+.dllf .fleet-card .tag{display:inline-flex;padding:5px 11px;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:999px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px}
+.dllf .fleet-card h4{color:#fff;font-size:25px;letter-spacing:-0.025em}
+.dllf .fleet-card .specs{display:flex;gap:14px;margin-top:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.7);flex-wrap:wrap}
+
+/* ====== Tehniskie rasējumi ====== */
+.dllf .draw-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.dllf .draw-card{background:#fff;border:1px solid #E4E1DA;border-radius:20px;padding:36px 36px 28px;display:flex;flex-direction:column;gap:18px;transition:box-shadow .25s,transform .25s}
+.dllf .draw-card:hover{box-shadow:0 24px 60px -28px rgba(0,0,0,0.25);transform:translateY(-3px)}
+.dllf .draw-card .top{display:flex;justify-content:space-between;align-items:start;gap:16px}
+.dllf .draw-card h4{color:#111;font-size:24px;letter-spacing:-0.02em}
+.dllf .draw-card .cap{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#9A9286}
+.dllf .draw-card .img{padding:18px 8px;display:grid;place-items:center;min-height:170px}
+.dllf .draw-card .img img{max-height:200px;width:auto;max-width:100%}
+.dllf .draw-card .specs{display:flex;gap:10px;flex-wrap:wrap;padding-top:18px;border-top:1px solid #ECE9E2}
+.dllf .draw-card .specs span{font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;color:#6B6457;background:#F4F2ED;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.dllf .draw-card .specs span b{color:#111;font-weight:600}
+
+/* ====== Projects ====== */
+.dllf .proj-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.dllf .proj-row{display:grid;grid-template-columns:56px 260px 1fr 230px 72px;align-items:center;gap:32px;padding:28px 16px;border-bottom:1px solid var(--line);transition:background .2s}
+.dllf .proj-row:hover{background:var(--bg-2)}
+.dllf .proj-row .ix{font-family:var(--font-mono);font-size:13px;letter-spacing:0.1em;color:var(--soft)}
+.dllf .proj-row .img{height:84px;border-radius:14px;overflow:hidden;background:var(--bg-3)}
+.dllf .proj-row .img img{width:100%;height:100%;object-fit:cover}
+.dllf .proj-row .main h4{font-size:22px;letter-spacing:-0.02em}
+.dllf .proj-row .main p{font-size:13px;color:var(--mute);margin:6px 0 0;line-height:1.45}
+.dllf .proj-row .spec{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--mute);display:flex;flex-direction:column;gap:6px}
+.dllf .proj-row .spec b{font-family:var(--font-display);font-weight:700;color:#fff;font-size:14px;letter-spacing:-0.01em;text-transform:none}
+.dllf .proj-row .arrow{justify-self:end;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--yellow);transition:background .25s,transform .25s,color .25s}
+.dllf .proj-row:hover .arrow{background:var(--yellow);color:#000;transform:translateX(4px)}
+
+/* ====== Partners ====== */
+.dllf .partners{display:flex;flex-wrap:wrap;gap:18px 56px;align-items:center;justify-content:space-between;padding:36px 0 8px}
+.dllf .partner{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-0.01em;color:rgba(255,255,255,0.42);transition:color .25s;white-space:nowrap}
+.dllf .partner:hover{color:#fff}
+
+/* ====== Quote ====== */
+.dllf .quote-big{padding:110px 32px;background:radial-gradient(circle at 18% 30%,rgba(255,210,0,0.07),transparent 55%)}
+.dllf .quote-big .inner{max-width:1060px}
+.dllf .quote-big .mk{font-family:var(--font-display);font-size:110px;line-height:0.6;color:var(--yellow);margin-bottom:24px;font-weight:800}
+.dllf .quote-big blockquote{font-family:var(--font-display);font-weight:600;font-size:clamp(32px,4vw,56px);line-height:1.12;letter-spacing:-0.03em;color:#fff;margin:0 0 36px}
+.dllf .quote-big .who{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute)}
+.dllf .quote-big .who b{color:#fff;font-weight:500;display:block}
+
+/* ====== Foto josla ====== */
+.dllf .photo-band{position:relative;min-height:440px;overflow:hidden;display:flex;align-items:end}
+.dllf .photo-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dllf .photo-band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,0.6) 0%,rgba(11,11,12,0.05) 45%,rgba(11,11,12,0.75) 100%)}
+.dllf .photo-band .inner{position:relative;z-index:2;padding:48px 32px;width:100%;display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap}
+.dllf .photo-band h3{font-size:clamp(28px,3.2vw,44px);max-width:22ch}
+.dllf .photo-band .cap{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.75)}
+
+/* ====== CTA banner ====== */
+.dllf .cta-banner{position:relative;padding:110px 32px;overflow:hidden;border-top:1px solid var(--line)}
+.dllf .cta-banner .bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 25%,rgba(255,210,0,0.13),transparent 60%)}
+.dllf .cta-banner .inner{position:relative;text-align:center;max-width:880px}
+.dllf .cta-banner h2{margin:0 auto}
+.dllf .cta-banner p{font-size:19px;color:var(--mute);max-width:54ch;margin:24px auto 36px}
+.dllf .cta-banner .row{display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center}
+
+/* ====== Footer ====== */
+.dllf footer.site-foot{padding:80px 32px 32px;background:#070708;font-size:14px;border-top:1px solid var(--line)}
+.dllf footer .inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:var(--max);margin:0 auto}
+.dllf footer h5{font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--yellow);font-weight:500;margin:0 0 18px}
+.dllf footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;color:var(--mute)}
+.dllf footer a{color:var(--mute)}
+.dllf footer a:hover{color:var(--yellow)}
+.dllf footer .bot{max-width:var(--max);margin:48px auto 0;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute)}
+.dllf .foot-brand p{color:var(--mute);font-size:15px;max-width:38ch}
+
+/* ====== Inner pages ====== */
+.dllf .page-head{padding:120px 32px 72px;border-bottom:1px solid var(--line);background:radial-gradient(circle at 82% 8%,rgba(255,210,0,0.07),transparent 50%)}
+.dllf .page-head .inner{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:end}
+.dllf .page-head .crumb{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-bottom:24px}
+.dllf .page-head .crumb a:hover{color:var(--yellow)}
+.dllf .page-head h1{font-size:clamp(48px,6vw,104px)}
+.dllf .page-head h1 em{font-style:normal;color:var(--yellow)}
+
+/* Services page list */
+.dllf .svc-acc{border-top:1px solid var(--line)}
+.dllf .svc-item{display:grid;grid-template-columns:72px 1fr 1.5fr 180px;gap:32px;padding:40px 16px;border-bottom:1px solid var(--line);align-items:start;transition:background .25s}
+.dllf .svc-item:hover{background:var(--bg-2)}
+.dllf .svc-item .ix{font-family:var(--font-mono);font-size:13px;color:var(--soft);letter-spacing:0.1em}
+.dllf .svc-item h3{font-size:28px;letter-spacing:-0.025em;line-height:1.08}
+.dllf .svc-item .ds{font-size:15px;color:var(--mute);line-height:1.55;margin:0}
+.dllf .svc-item .go{justify-self:end}
+.dllf .svc-item.feat{background:linear-gradient(90deg,rgba(255,210,0,0.08),transparent)}
+
+/* Contact */
+.dllf .contact-grid{display:grid;grid-template-columns:1.2fr 1fr}
+.dllf .contact-form{padding:72px 56px;background:var(--bg);border-right:1px solid var(--line)}
+.dllf .contact-info{padding:72px 56px;background:#070708}
+.dllf .aud-toggle{display:flex;gap:10px;margin-bottom:32px;padding:6px;background:var(--bg-2);border-radius:999px;border:1px solid var(--line)}
+.dllf .aud-toggle button{flex:1;padding:14px 18px;border-radius:999px;font-size:14px;font-weight:500;color:var(--mute);background:transparent;transition:all .2s}
+.dllf .aud-toggle button.on{background:var(--yellow);color:#000;font-weight:600}
+.dllf .form-row{display:flex;flex-direction:column;gap:6px;margin-bottom:20px}
+.dllf .form-row label{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute)}
+.dllf .form-row input,.dllf .form-row select,.dllf .form-row textarea{font-family:var(--font-body);font-size:16px;padding:14px 16px;border:1px solid var(--line);background:var(--bg-2);color:#fff;outline:0;border-radius:12px;transition:border-color .2s,background .2s}
+.dllf .form-row input:focus,.dllf .form-row select:focus,.dllf .form-row textarea:focus{border-color:var(--yellow);background:var(--bg-3)}
+.dllf .form-row textarea{min-height:120px;resize:vertical}
+.dllf .form-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.dllf .info-block{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--line)}
+.dllf .info-block:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.dllf .info-block h5{font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--yellow);margin:0 0 14px;font-weight:500}
+.dllf .info-block .big{font-family:var(--font-display);font-weight:800;font-size:40px;letter-spacing:-0.04em;line-height:1;color:#fff;display:block;margin-bottom:12px}
+.dllf .info-block p{font-size:15px;color:var(--mute);margin:0;line-height:1.5}
+
+/* ====== Responsive ====== */
+@media (max-width:1000px){
+  .dllf .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .dllf .usp{grid-template-columns:1fr}
+  .dllf .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .dllf .fleet-strip,.dllf .fleet-strip.b{grid-template-columns:1fr 1fr}
+  .dllf .draw-grid{grid-template-columns:1fr}
+  .dllf .proj-row{grid-template-columns:1fr;gap:14px}
+  .dllf .partners{justify-content:flex-start;gap:14px 32px}
+  .dllf footer .inner{grid-template-columns:1fr 1fr}
+  .dllf .contact-grid{grid-template-columns:1fr}
+  .dllf .page-head .inner{grid-template-columns:1fr}
+  .dllf nav.primary{display:none}
+  .dllf .svc-item{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .dllf .svc-grid{grid-template-columns:1fr}
+  .dllf .fleet-strip,.dllf .fleet-strip.b{grid-template-columns:1fr}
+  .dllf .hero-stats{grid-template-columns:1fr 1fr}
+  .dllf .head-bar .left span:not(.live){display:none}
+  .dllf .head-bar .pipe{display:none}
+}

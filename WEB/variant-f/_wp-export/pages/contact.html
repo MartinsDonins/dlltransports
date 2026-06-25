@@ -1,15 +1,7 @@
-<!doctype html>
-<html lang="lv">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Kontakti — DLL-Transports</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" />
-<link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+<!-- DLL-Transports — KONTAKTI (contact) · ietin .dllf
+     UZMANĪBU: forma ir DEMO (neaktīva). Produkcijai jāaizvieto ar īstu formu
+     (skat. _wp-export/README.md → "Forma & JS"). -->
+<div class="dllf">
 
 <header class="site-head">
   <div class="head-bar">
@@ -29,16 +21,16 @@
     </div>
   </div>
   <div class="head-main">
-    <a href="home.html" class="brand">
+    <a href="/" class="brand">
       <div class="brand-mark">D</div>
       <div class="brand-text">DLL-Transports<small>Internationale Transport &amp; Logistik</small></div>
     </a>
     <nav class="primary">
-      <a href="home.html">Sākums</a>
-      <a href="services.html">Pakalpojumi</a>
-      <a href="home.html#fleet">Autoparks</a>
-      <a href="home.html#projects">Projekti</a>
-      <a href="contact.html" class="active">Kontakti</a>
+      <a href="/">Sākums</a>
+      <a href="/pakalpojumi/">Pakalpojumi</a>
+      <a href="/#fleet">Autoparks</a>
+      <a href="/#projects">Projekti</a>
+      <a href="/kontakti/" class="active">Kontakti</a>
     </nav>
     <a href="tel:+37129242181" class="btn btn-primary btn-sm">+371 29 242 181 <span class="arr">↗</span></a>
   </div>
@@ -47,7 +39,7 @@
 <section class="page-head">
   <div class="inner">
     <div>
-      <div class="crumb"><a href="home.html">Sākums</a> &nbsp;/&nbsp; Kontakti</div>
+      <div class="crumb"><a href="/">Sākums</a> &nbsp;/&nbsp; Kontakti</div>
       <h1>Pieprasīt<br/><em>piedāvājumu.</em></h1>
     </div>
     <div>
@@ -57,6 +49,7 @@
 </section>
 
 <section class="contact-grid">
+  <!-- DEMO forma — produkcijā aizvietot ar īstu (WPForms / coredigify plugin / e-pasts) -->
   <form class="contact-form" onsubmit="event.preventDefault();alert('Demo · forma neaktīva')">
     <div class="aud-toggle">
       <button type="button" class="on" data-aud="b2b">B2B · Uzņēmums</button>
@@ -180,18 +173,18 @@
     <div>
       <h5>Pakalpojumi</h5>
       <ul>
-        <li><a href="services.html#s01">Treilera pārvadājumi</a></li>
-        <li><a href="services.html#s03">Lielgabarīta</a></li>
-        <li><a href="services.html#s06">Ekspress piegāde</a></li>
-        <li><a href="services.html#s11">Noliktavu pakalpojumi</a></li>
+        <li><a href="/pakalpojumi/#s01">Treilera pārvadājumi</a></li>
+        <li><a href="/pakalpojumi/#s03">Lielgabarīta</a></li>
+        <li><a href="/pakalpojumi/#s06">Ekspress piegāde</a></li>
+        <li><a href="/pakalpojumi/#s11">Noliktavu pakalpojumi</a></li>
       </ul>
     </div>
     <div>
       <h5>Uzņēmums</h5>
       <ul>
-        <li><a href="home.html#fleet">Autoparks</a></li>
-        <li><a href="home.html#drawings">Tehniskie rasējumi</a></li>
-        <li><a href="home.html#projects">Projekti</a></li>
+        <li><a href="/#fleet">Autoparks</a></li>
+        <li><a href="/#drawings">Tehniskie rasējumi</a></li>
+        <li><a href="/#projects">Projekti</a></li>
       </ul>
     </div>
     <div>
@@ -209,16 +202,18 @@
   </div>
 </footer>
 
+</div>
+<!-- /.dllf -->
+
+<!-- DEMO JS (aud-toggle + ?aud=b2c). WP parasti izņem inline <script> no satura;
+     produkcijā šo pievieno caur tēmu/plugin vai aizstāj ar īsto formu. -->
 <script>
-  document.querySelectorAll('.aud-toggle button').forEach(b=>{
-    b.addEventListener('click',()=>{
-      document.querySelectorAll('.aud-toggle button').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.dllf .aud-toggle button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.dllf .aud-toggle button').forEach(function(x){x.classList.remove('on');});
       b.classList.add('on');
     });
   });
-  const aud = new URLSearchParams(location.search).get('aud');
-  if (aud === 'b2c') document.querySelector('[data-aud="b2c"]')?.click();
+  var aud = new URLSearchParams(location.search).get('aud');
+  if (aud === 'b2c') { var el = document.querySelector('.dllf [data-aud="b2c"]'); if(el) el.click(); }
 </script>
-
-</body>
-</html>
