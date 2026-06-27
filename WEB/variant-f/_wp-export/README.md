@@ -50,13 +50,13 @@ Avota mape: `WEB/variant-f/img/`
 | hero.jpg | ✅ | home — hero fons |
 | fleet-goldhofer.jpg | ✅ | home — autoparks + projekts /01 |
 | fleet-scania.jpg | ✅ | home — autoparks |
-| fleet-max100.jpg | ✅ | home — autoparks |
+| fleet-max100.jpg | ❌ | NETIEK lietots (MAX 100 — neeksistējoša vienība, noņemta pēc klienta norādes) |
 | fleet-doll.jpg | ✅ | home — autoparks |
 | fleet-trailer.jpg | ✅ | home — autoparks |
 | fleet-man.jpg | ✅ | home — autoparks + projekts /02 |
 | karjera.jpg | ✅ | home — projekts /03 |
 | ras-goldhofer.jpg | ✅ | home — rasējumi |
-| ras-max100.jpg | ✅ | home — rasējumi |
+| ras-max100.jpg | ❌ | NETIEK lietots (MAX 100 — neeksistējoša vienība, noņemta pēc klienta norādes) |
 | ras-doll.jpg | ✅ | home — rasējumi |
 | ras-mega.jpg | ✅ | home — rasējumi |
 | tilts.jpg | ✅ | home — foto josla |
@@ -90,7 +90,7 @@ HTML jau lieto šos slug'us — **pielāgo, ja WP lapām būs citi**:
 
 > Precīzos tool-parametrus ielādēšu izpildes brīdī. Augsta līmeņa plāns:
 
-1. `wp_upload_media` — augšupielādēt 13 bildes no `img/`. Pierakstīt atdotos URL.
+1. `wp_upload_media` — augšupielādēt 11 lietotās bildes no `img/` (izlaist fleet-max100.jpg, ras-max100.jpg, ras-treileris.jpg). Pierakstīt atdotos URL.
 2. `pages/*.html` — `{{MEDIA}}` → media bāzes URL.
 3. `wp_set_css` — ielikt `css/dll-variant-f.css` saturu (theme-independent).
 4. `wp_create_page` ×3 — Sākums / Pakalpojumi / Kontakti (blank template, Divi builder OFF).
@@ -142,7 +142,7 @@ Izdomātie dati nomainīti pret reāliem / noņemti; saturs aizvietots ar klient
 - **home — projekti** (3 apraksti) un **hero "4h reakcija"** — apstiprināt vai aizstāt.
 - **info@dlltransports.lv** — apstiprināt, ka šāds e-pasts/alias eksistē.
 - **i18n vārdnīca**: jaunie LV pakalpojumu teksti **vēl nav iztulkoti** EN/RU/DE — `i18n-dict.cjs` jāpapildina, citādi šie fragmenti rādās latviski.
-- **Bildes**: fleet/rasējumi vēl lieto vecos failus (t.sk. fleet-max100.jpg). Jāizvēlas reālās bildes no `DOCS/.../Bildes/` pa vienībām.
+- **Bildes**: MAX 100 (neeksistējoša vienība) noņemta. Atlikušajām vienībām fleet/rasējumi vēl lieto pagaidu failus — jāizvēlas reālās bildes no `DOCS/.../Bildes/` pa vienībām (DOLL, GOLDHOFER, JCB, MAN, MAN TGE, SCANIA, TRAILER, PILOTS).
 
 **JAUNAS VIENĪBAS no klienta "nepieciešamās izmaiņas" (vēl jāpievieno):**
 - MAN TGE (pelēkais busiņš, ekspress, 3 EPAL) · Vilcēji ar tenta piekabēm
